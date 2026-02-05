@@ -1,0 +1,154 @@
+/* =========================
+   Global Reset & Base Styles
+   ========================= */
+
+/* Reset margin, padding, and box-sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base HTML & body styles */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f9fafb;
+  color: #0f172a;
+  overflow-x: hidden; /* Prevent right-side scroll */
+  scroll-behavior: smooth;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Lists */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   Global Container
+   ========================= */
+/*
+  .container ensures:
+  ✔ Responsive width
+  ✔ Proper spacing on all devices
+  ✔ No horizontal overflow
+*/
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* =========================
+   Utility Classes
+   ========================= */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.m-auto { margin: auto; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 2rem; }
+
+/* =========================
+   Animations (Optional)
+   ========================= */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================
+   Responsive Breakpoints
+   ========================= */
+
+/* Extra large desktops */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+
+/* Laptops */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1100px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 960px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* =========================
+   Tips to Prevent Right-Side Gap
+   ========================= */
+
+/*
+1. Always use max-width: 100% for images, videos, charts:
+   img, video, canvas {
+     max-width: 100%;
+   }
+
+2. Avoid width: 100vw with padding/margin — use width: 100% instead.
+
+3. Ensure all sections/cards inside .container do not exceed 100% width.
+
+4. Use overflow-x: hidden on body/html to hide accidental scroll (already added).
+*/
