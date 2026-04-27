@@ -5,104 +5,128 @@ const Footer = () => {
     <>
       <footer className="footer">
         <div className="footer-container">
-          <div className="footer-content">
 
-            {/* Brand */}
-            <div className="footer-brand">
-              <a href="#" className="footer-logo">
+          <div className="footer-grid">
+
+            {/* ABOUT */}
+            <div className="footer-section">
+              <h2 className="logo">
                 Chetan<span>Dhapkas</span>
-              </a>
+              </h2>
               <p>
-                Engineering student and aspiring software developer passionate
-                about building modern web solutions.
+                I'm a passionate software developer focused on building modern,
+                responsive, and user-friendly web applications. I love turning
+                ideas into real-world digital solutions.
               </p>
             </div>
 
-            {/* Links */}
-            <div className="footer-links">
+            {/* QUICK LINKS */}
+            <div className="footer-section">
+              <h3>Quick Links</h3>
               <a href="#about">About</a>
               <a href="#projects">Projects</a>
               <a href="#skills">Skills</a>
               <a href="#education">Experience</a>
             </div>
 
-            {/* Copyright */}
-            <p className="footer-copy">
-              © {new Date().getFullYear()} Chetan Dhapkas. Built with React.
-            </p>
+            {/* SERVICES */}
+            <div className="footer-section">
+              <h3>Services</h3>
+              <p>Website Development</p>
+              <p>UI/UX Design</p>
+              <p>Frontend Development</p>
+              <p>Landing Pages</p>
+            </div>
+
+            {/* CONTACT */}
+            <div className="footer-section">
+              <h3>Contact</h3>
+              <p>Email: chetan@example.com</p>
+              <p>Location: Nagpur, India</p>
+              <p>Available for Freelance</p>
+            </div>
+
+            {/* SOCIAL */}
+            <div className="footer-section">
+              <h3>Follow Me</h3>
+              <div className="socials">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+              </div>
+            </div>
 
           </div>
+
+          {/* BOTTOM */}
+          <div className="footer-bottom">
+            <p>
+              © {new Date().getFullYear()} Chetan Dhapkas. All rights reserved.
+            </p>
+          </div>
+
         </div>
       </footer>
 
-      {/* CSS in same file */}
       <style>{`
         .footer {
-          padding: 3rem 1.5rem;
-          background-color: #f8fafc;
-          border-top: 1px solid #e5e7eb;
+          background: #020617;
+          color: #e2e8f0;
+          padding: 4rem 1.5rem 2rem;
         }
 
         .footer-container {
           max-width: 1200px;
-          margin: 0 auto;
+          margin: auto;
         }
 
-        .footer-content {
-          display: flex;
-          flex-direction: column;
+        .footer-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 2rem;
-          align-items: center;
-          text-align: center;
+          margin-bottom: 3rem;
         }
 
-        @media (min-width: 768px) {
-          .footer-content {
-            flex-direction: row;
-            justify-content: space-between;
-            text-align: left;
-          }
+        .footer-section h3 {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          color: #f1f5f9;
         }
 
-        .footer-logo {
+        .footer-section p,
+        .footer-section a {
+          font-size: 0.85rem;
+          color: #94a3b8;
+          margin-bottom: 0.5rem;
+          display: block;
+          text-decoration: none;
+        }
+
+        .footer-section a:hover {
+          color: #38bdf8;
+        }
+
+        .logo {
           font-size: 1.5rem;
           font-weight: 800;
-          color: #0f172a;
-          text-decoration: none;
-          letter-spacing: -0.02em;
+          color: #fff;
         }
 
-        .footer-logo span {
-          color: #2563eb;
+        .logo span {
+          color: #38bdf8;
         }
 
-        .footer-brand p {
-          font-size: 0.875rem;
-          color: #64748b;
-          margin-top: 0.5rem;
-          max-width: 260px;
-        }
-
-        .footer-links {
+        .socials {
           display: flex;
-          gap: 2rem;
-          font-size: 0.875rem;
-          font-weight: 600;
+          gap: 1rem;
         }
 
-        .footer-links a {
-          text-decoration: none;
-          color: #475569;
-          transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-          color: #2563eb;
-        }
-
-        .footer-copy {
+        .footer-bottom {
+          border-top: 1px solid #1e293b;
+          padding-top: 1.5rem;
+          text-align: center;
           font-size: 0.75rem;
-          color: #94a3b8;
+          color: #64748b;
         }
       `}</style>
     </>

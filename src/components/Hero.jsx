@@ -1,24 +1,23 @@
 import React from "react";
-import profileImg from "../assets/portfolio1.jpg"; // ✅ IMPORT IMAGE
+import profileImg from "../assets/portfolio1.jpg";
 
 // Features Array
 const FEATURES = [
   { icon: "💻", title: "Engineering", desc: "3rd-year IT Student at PCE Nagpur" },
-  { icon: "⚙️", title: "Web Dev", desc: "Learn and write clean code" },
+  { icon: "⚙️", title: "Web Dev", desc: "Learn and write clean, efficient code" },
   { icon: "🤖", title: "Backend", desc: "Familiar with server-side programming concepts using Java." },
-  { icon: "🛠️", title: "UI/UX Design", desc: "Creating user-friendly and modern interfaces for web and mobile applications using AI-assisted design tools." },
+  { icon: "🛠️", title: "UI/UX Design", desc: "Creating user-friendly and modern interfaces using modern tools." },
 ];
 
-// Hero Section: Text + Image
+// Hero Section
 const HeroTop = () => (
-  <div className="hero-top">
-    {/* Text Section */}
+  <div id="home"className="hero-top">
+    
     <div className="hero-text">
       <p className="badge">
-  <span className="live-dot"></span>
-  Available for Internships
-</p>
-
+        <span className="live-dot"></span>
+        Available for Internships
+      </p>
 
       <h1>
         Hi, I'm Chetan <br />
@@ -32,18 +31,20 @@ const HeroTop = () => (
 
       <div className="hero-buttons">
         <a href="#projects" className="btn-primary">View My Projects →</a>
-        <a href="/RESUME3rd.pdf" download className="btn-outline">Download Resume</a>
+        <a href="/PORTFOLIO/Resume.pdf" download className="btn-outline">
+          Download Resume
+        </a>
       </div>
     </div>
 
-    {/* Image Section */}
     <div className="hero-image">
-      <img src={profileImg} alt="Chetan Dhapkas" /> {/* ✅ FIXED */}
+      <img src={profileImg} alt="Chetan Dhapkas" />
       <div className="hero-image-caption">
         <p className="name">Chetan Dhapkas</p>
         <p className="role">Information Technology @ PCE Nagpur</p>
       </div>
     </div>
+
   </div>
 );
 
@@ -60,12 +61,49 @@ const Features = () => (
   </div>
 );
 
-// Main Hero Component
+// MAIN HERO
 const Hero = () => {
   return (
+    
     <section className="hero">
+
+      {/* 🔥 MULTI-LAYER CODE BACKGROUND */}
+      <div className="code-bg">
+
+        <pre className="code-layer layer1">
+{`function greet() {
+  console.log("Hello Chetan 👨‍💻");
+}
+
+const skills = ["HTML", "CSS", "JavaScript", "React"];
+
+skills.forEach(skill => console.log(skill));`}
+        </pre>
+
+        <pre className="code-layer layer2">
+{`while(true) {
+  keepLearning();
+}
+
+function buildProjects() {
+  return "Keep Growing 🚀";
+}`}
+        </pre>
+
+        <pre className="code-layer layer3">
+{`const future = "Full Stack Developer";
+
+if(success) {
+  achieveGoals();
+}`}
+        </pre>
+
+      </div>
+
+      {/* CONTENT */}
       <HeroTop />
       <Features />
+
     </section>
   );
 };

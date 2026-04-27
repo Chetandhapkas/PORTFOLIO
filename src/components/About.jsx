@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Mountain, Award, Code2 } from "lucide-react";
 import "../index.css";
 
 const About = () => {
+  const aboutRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          aboutRef.current.classList.add("show");
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => {
+      if (aboutRef.current) {
+        observer.unobserve(aboutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="about" className="about">
+    <section class="section section-merge">
+    <section id="about" className="about" ref={aboutRef}>
       <div className="container">
         {/* Header */}
         <div className="about-header">
@@ -17,16 +41,13 @@ const About = () => {
           {/* Left */}
           <div className="about-text">
             <p>
-              I am a 3rd-year Information Technology student at Priyadarshini
-              College of Engineering, Nagpur. My passion lies in solving
-              real-world problems through logical coding, web development, and
-              creative digital solutions.
+              I am a 3rd-year Information Technology student at Priyadarshini College of Engineering, Nagpur. 
+              I enjoy solving real-world problems through logical thinking, clean code, and modern web development.
             </p>
 
             <p>
-              Beyond academics, I’m an explorer—passionate about coding and web
-              development, and active in sports, having earned mountaineering
-              certificates in Gujarat and recognition in football tournaments.
+             Beyond academics, I’m an explorer with a strong interest in technology and sports.
+             I have earned mountaineering certifications in Gujarat and actively participated in football tournaments, building discipline, teamwork, and resilience.
             </p>
 
             <div className="about-links">
@@ -84,6 +105,7 @@ const About = () => {
           </div>
         </div>
       </div>
+    </section>
     </section>
   );
 };

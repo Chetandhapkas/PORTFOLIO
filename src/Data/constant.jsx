@@ -57,17 +57,61 @@ export const PROJECTS = [
 ];
 
 /* ================= SKILLS ================= */
-
 export const SKILLS = [
-  { name: "C", level: 90, category: "Language" },
-  { name: "C++", level: 85, category: "Language" },
-  { name: "Java", level: 60, category: "Backend" },
-  { name: "JavaScript", level: 60, category: "Backend" },
-  { name: "React", level: 85, category: "Frontend" },
-  { name: "HTML5 / CSS3", level: 90, category: "Frontend" },
-  { name: "UI/UX Design", level: 75, category: "Frontend" },
-  { name: "Git & GitHub", level: 80, category: "Tools" },
-  { name: "VS Code", level: 95, category: "Tools" }
+  {
+    name: "C",
+    category: "Language",
+    desc1: "Strong foundation in programming",
+    desc2: "Used for logic building & problem solving"
+  },
+  {
+    name: "C++",
+    category: "Language",
+    desc1: "Object-oriented programming",
+    desc2: "Used in DSA and competitive coding"
+  },
+  {
+    name: "Java",
+    category: "Backend",
+    desc1: "Backend development basics",
+    desc2: "Learning OOP & real-world applications"
+  },
+  {
+    name: "JavaScript",
+    category: "Backend",
+    desc1: "Core web scripting language",
+    desc2: "Used for dynamic web apps"
+  },
+  {
+    name: "React",
+    category: "Frontend",
+    desc1: "Modern UI development",
+    desc2: "Component-based architecture"
+  },
+  {
+    name: "HTML5 / CSS3",
+    category: "Frontend",
+    desc1: "Responsive web design",
+    desc2: "Strong UI structuring skills"
+  },
+  {
+    name: "UI/UX Design",
+    category: "Frontend",
+    desc1: "Focus on user experience",
+    desc2: "Designing clean interfaces"
+  },
+  {
+    name: "Git & GitHub",
+    category: "Tools",
+    desc1: "Version control system",
+    desc2: "Project collaboration & tracking"
+  },
+  {
+    name: "VS Code",
+    category: "Tools",
+    desc1: "Efficient code editor",
+    desc2: "Supports multiple extensions"
+  }
 ];
 
 /* ================= EDUCATION ================= */

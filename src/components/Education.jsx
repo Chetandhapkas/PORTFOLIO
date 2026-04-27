@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { EDUCATION, INTERNSHIPS } from "../Data/constant.jsx";
 import { GraduationCap, Briefcase, Star } from "lucide-react";
 import "../index.css";
 
 const Education = () => {
+
+  const itemsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    itemsRef.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
+    <section class="section section-merge">
     <section id="education" className="education-section">
       <div className="container">
         <div className="education-grid">
@@ -20,8 +43,12 @@ const Education = () => {
 
             <div className="timeline">
               {EDUCATION.map((edu, idx) => (
-                <div className="timeline-item" key={idx}>
-                  <span className="timeline-dot blue"></span>
+                <div
+                  className="timeline-item"
+                  key={idx}
+                  ref={(el) => (itemsRef.current[idx] = el)}
+                >
+                  <span className="timeline-dot"></span>
 
                   <div className="timeline-card">
                     <span className="timeline-period">{edu.period}</span>
@@ -49,8 +76,14 @@ const Education = () => {
 
             <div className="timeline">
               {INTERNSHIPS.map((exp, idx) => (
-                <div className="timeline-item" key={idx}>
-                  <span className="timeline-dot indigo"></span>
+                <div
+                  className="timeline-item"
+                  key={idx}
+                  ref={(el) =>
+                    (itemsRef.current[EDUCATION.length + idx] = el)
+                  }
+                >
+                  <span className="timeline-dot"></span>
 
                   <div className="timeline-card">
                     <span className="timeline-period">{exp.period}</span>
@@ -62,8 +95,15 @@ const Education = () => {
               ))}
 
               {/* Extra */}
-              <div className="timeline-item">
-                <span className="timeline-dot indigo"></span>
+              <div
+                className="timeline-item"
+                ref={(el) =>
+                  (itemsRef.current[
+                    EDUCATION.length + INTERNSHIPS.length
+                  ] = el)
+                }
+              >
+                <span className="timeline-dot"></span>
 
                 <div className="timeline-card gradient-card">
                   <h4>Extra-Curricular Highlights</h4>
@@ -80,6 +120,7 @@ const Education = () => {
 
         </div>
       </div>
+    </section>
     </section>
   );
 };

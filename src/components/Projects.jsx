@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { PROJECTS } from "../Data/constant.jsx";
 import { ExternalLink, Lock, Code, Info } from "lucide-react";
 import "../index.css";
 
 const Projects = () => {
   const [filter, setFilter] = useState("All");
+  const cardsRef = useRef([]);
 
   const filteredProjects =
     filter === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === filter);
+
+  // ✅ Intersection Observer (React way)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, [filteredProjects]); // re-run when filter changes
 
   return (
     <section id="projects" className="projects">
@@ -37,8 +58,12 @@ const Projects = () => {
 
         {/* Grid */}
         <div className="projects-grid">
-          {filteredProjects.map((project) => (
-            <div key={project.id} className="project-card">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={project.id}
+              ref={(el) => (cardsRef.current[index] = el)}
+              className="project-card"
+            >
 
               {/* Image */}
               <div className="project-image">
@@ -50,7 +75,7 @@ const Projects = () => {
 
                 <span className="category">{project.category}</span>
 
-                {project.isPrivate === true && (
+                {project.isPrivate && (
                   <span className="lock">
                     <Lock size={16} />
                   </span>
@@ -65,8 +90,8 @@ const Projects = () => {
                 {/* Tech Stack */}
                 {Array.isArray(project.tech) && (
                   <div className="tech-list">
-                    {project.tech.map((t, index) => (
-                      <span key={index}>{t}</span>
+                    {project.tech.map((t, i) => (
+                      <span key={i}>{t}</span>
                     ))}
                   </div>
                 )}
